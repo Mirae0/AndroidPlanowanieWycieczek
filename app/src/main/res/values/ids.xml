@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="fragment_login" type="id" />
+    <item name="fragment_register" type="id" />
+    <item name="navigation_login" type="id" />
+    <item name="navigation_register" type="id" />
+</resources>
