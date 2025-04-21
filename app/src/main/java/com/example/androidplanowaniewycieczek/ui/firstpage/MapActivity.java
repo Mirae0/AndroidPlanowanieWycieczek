@@ -213,6 +213,10 @@ public class MapActivity extends AppCompatActivity implements SensorEventListene
         // Lokalizacja
         locationClient = LocationServices.getFusedLocationProviderClient(this);
         requestLocationPermission();
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACTIVITY_RECOGNITION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACTIVITY_RECOGNITION}, 2);
+        }
+
     }
 
     private void requestLocationPermission() {
@@ -361,5 +365,13 @@ public class MapActivity extends AppCompatActivity implements SensorEventListene
         } else {
             Toast.makeText(this, "Brak zgody na lokalizację", Toast.LENGTH_SHORT).show();
         }
+        if (requestCode == 2) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(this, "Dostęp do aktywności przyznany", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Brak dostępu do aktywności fizycznej", Toast.LENGTH_SHORT).show();
+            }
+        }
+
     }
 }

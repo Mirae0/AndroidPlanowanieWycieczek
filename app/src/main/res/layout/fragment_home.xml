@@ -202,7 +202,7 @@
                     android:id="@+id/textView4"
                     android:layout_width="809dp"
                     android:layout_height="30dp"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="32dp"
                     android:layout_marginTop="32dp"
                     android:text="Twoje zaplanowane wycieczki"
                     android:textColor="@color/black"
@@ -246,6 +246,12 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="800dp"
+                android:layout_height="300dp"
+                android:src="@drawable/bg_2" />
 
 
         </LinearLayout>

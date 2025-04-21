@@ -7,15 +7,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#BDDCC7"
-    tools:context=".ui.register.RegisterFragment">
+    tools:context=".ui.register.RegisterFragment"
+    android:gravity="center">
 
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="500dp"
-        android:layout_height="350dp"
-        android:layout_gravity="center"
-        android:src="@drawable/booking" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -91,7 +85,7 @@
                 android:padding="8dp"
                 android:text="Masz konto? Zaloguj się!"
                 android:textColor="#87D19E"
-                android:textSize="18sp" />
+                android:textSize="10sp" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

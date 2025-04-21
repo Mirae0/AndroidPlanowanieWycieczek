@@ -43,15 +43,11 @@
 
             <EditText
                 android:id="@+id/edit_trip_from"
-                android:layout_width="355dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-
+                android:layout_width="322dp"
+                android:layout_height="wrap_content"
                 android:gravity="left"
                 android:hint="Skąd"
-
-                android:minHeight="48dp"
-                android:textSize="20dp" />
+                android:minHeight="48dp" />
 
             <ImageButton
                 android:id="@+id/btn_current_location"
@@ -73,7 +69,7 @@
 
             <EditText
                 android:id="@+id/edit_trip_to"
-                android:layout_width="347dp"
+                android:layout_width="322dp"
                 android:layout_height="wrap_content"
                 android:gravity="left"
                 android:hint="Dokąd"
