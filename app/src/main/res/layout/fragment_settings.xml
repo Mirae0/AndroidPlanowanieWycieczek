@@ -1,0 +1,71 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/settings_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:id="@+id/text_settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ustawienia"
+        android:textSize="24sp"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/buttonLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Zaloguj się"
+        android:backgroundTint="#87D19E"
+        app:cornerRadius="20dp"
+        android:layout_marginTop="12dp"/>
+
+    <Button
+        android:id="@+id/buttonRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Zarejestruj się"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="#87D19E"
+        app:cornerRadius="20dp" />
+
+    <Button
+        android:id="@+id/buttonChangePassword"
+        android:layout_width="359dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Zmień hasło"
+        android:backgroundTint="#87D19E"
+        app:cornerRadius="20dp"/>
+
+    <Button
+        android:id="@+id/buttonChangeTheme"
+        android:layout_width="362dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Zmień motyw"
+        android:backgroundTint="#87D19E"
+        app:cornerRadius="20dp"/>
+
+    <Button
+        android:id="@+id/buttonChangeLanguage"
+        android:layout_width="367dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Zmień język"
+        android:backgroundTint="#87D19E"
+        app:cornerRadius="20dp"/>
+
+    <Button
+        android:id="@+id/buttonLogout"
+        android:layout_width="362dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Wyloguj się"
+        android:backgroundTint="#87D19E"
+        app:cornerRadius="20dp"/>
+
+</LinearLayout>

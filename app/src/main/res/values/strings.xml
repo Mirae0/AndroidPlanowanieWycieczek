@@ -7,4 +7,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_login" />
     <string name="title_register" />
+    <string name="data">Data:</string>
+    <string name="title_first_page" />
+    <string name="settings" />
+    <string name="title_settings">Settings</string>
 </resources>

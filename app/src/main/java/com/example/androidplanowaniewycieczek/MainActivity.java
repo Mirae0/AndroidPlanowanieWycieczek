@@ -6,6 +6,9 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -15,15 +18,27 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
 
-        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
-            if (destination.getId() == R.id.navigation_login || destination.getId() == R.id.navigation_register) {
-                findViewById(R.id.nav_view).setVisibility(View.GONE);
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
+        BottomNavigationView navView = findViewById(R.id.nav_view);
+
+        if ("home".equals(getIntent().getStringExtra("destination"))) {
+            navController.navigate(R.id.navigation_home);
+        }
+
+
+        navController.addOnDestinationChangedListener((controller, destinationObj, arguments) -> {
+            int destId = destinationObj.getId();
+            if (destId == R.id.navigation_login ||
+                    destId == R.id.navigation_register ||
+                    destId == R.id.navigation_forgotpassword) {
+                navView.setVisibility(View.GONE);
             } else {
-                findViewById(R.id.nav_view).setVisibility(View.VISIBLE);
+                navView.setVisibility(View.VISIBLE);
             }
         });
 
+
+        NavigationUI.setupWithNavController(navView, navController);
     }
 }

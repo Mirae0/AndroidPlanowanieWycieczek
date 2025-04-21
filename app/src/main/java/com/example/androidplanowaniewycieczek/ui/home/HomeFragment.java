@@ -1,5 +1,6 @@
 package com.example.androidplanowaniewycieczek.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,10 @@ import androidx.navigation.Navigation;
 
 import com.example.androidplanowaniewycieczek.R;
 import com.example.androidplanowaniewycieczek.databinding.FragmentHomeBinding;
+import com.example.androidplanowaniewycieczek.ui.firstpage.MapActivity;
+import com.example.androidplanowaniewycieczek.ui.firstpage.PlannedTripsActivity;
+import com.example.androidplanowaniewycieczek.ui.firstpage.RankingActivity;
+import com.example.androidplanowaniewycieczek.ui.firstpage.SynchronizedActivity;
 
 import org.jetbrains.annotations.Nullable;
 
@@ -24,11 +29,29 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        Button btnGoToLogin = view.findViewById(R.id.btn_go_to_login);
-        btnGoToLogin.setOnClickListener(v -> {
-            NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_activity_main);
-            navController.navigate(R.id.action_home_to_login);
+        TextView planTripButton = view.findViewById(R.id.textView2);
+        planTripButton.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), MapActivity.class);
+            startActivity(intent);
         });
+        TextView plannedTripsButton = view.findViewById(R.id.textView6);
+        plannedTripsButton.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), PlannedTripsActivity.class);
+            startActivity(intent);
+        });
+        TextView rankingButton = view.findViewById(R.id.textView7);
+        rankingButton.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), RankingActivity.class);
+            startActivity(intent);
+        });
+        TextView synchronizeTripButton = view.findViewById(R.id.textView9);
+        synchronizeTripButton.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), SynchronizedActivity.class);
+            startActivity(intent);
+        });
+
+
+
 
         return view;
     }

@@ -43,8 +43,15 @@ dependencies {
     implementation(libs.lifecycle.viewmodel.ktx)
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
+    implementation(libs.activity)
+    implementation(libs.play.services.location)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
     implementation ("com.google.android.gms:play-services-safetynet:18.1.0")
+    implementation ("org.osmdroid:osmdroid-android:6.1.16")
+    implementation ("com.google.android.gms:play-services-location:21.0.1")
+    implementation ("com.squareup.okhttp3:okhttp:4.9.3")
+    implementation ("org.json:json:20220320")
+
 }

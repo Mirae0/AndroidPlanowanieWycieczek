@@ -7,15 +7,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#BDDCC7"
-    tools:context=".ui.login.LoginFragment">
+    tools:context=".ui.login.LoginFragment"
+    android:gravity="center">
 
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="500dp"
-        android:layout_height="350dp"
-        android:layout_gravity="center"
-        android:src="@drawable/travel" />
 
     <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -27,7 +21,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="473dp"
+            android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
             android:background="@drawable/custom"
             android:orientation="vertical"
@@ -72,8 +66,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
                 android:layout_gravity="left"
-                android:layout_marginBottom="20dp"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp">
 
                 <ImageView
                     android:layout_width="69dp"
@@ -88,6 +82,18 @@
                     android:text="Nie jestem robotem."
                     android:textColor="@color/black" />
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/forgot_password_txt"
+                android:layout_width="315dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:minHeight="48dp"
+                android:padding="8dp"
+                android:text="Zapomniałeś hasła?" />
 
 
             <Button

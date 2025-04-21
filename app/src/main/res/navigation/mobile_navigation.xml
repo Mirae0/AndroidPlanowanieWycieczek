@@ -3,23 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_login">
 
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.example.androidplanowaniewycieczek.ui.home.HomeFragment"
         android:label="Home"
         tools:layout="@layout/fragment_home">
-        <action
-            android:id="@+id/action_home_to_login"
-            app:destination="@id/navigation_login" />
+
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.androidplanowaniewycieczek.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_settings"
+        android:name="com.example.androidplanowaniewycieczek.ui.settings.SettingsFragment"
+        android:label="@string/settings"
+        tools:layout="@layout/fragment_settings"/>
+    <action
+        android:id="@+id/action_settings_to_login"
+        app:destination="@id/navigation_login" />
+    <action
+        android:id="@+id/action_settings_to_register"
+        app:destination="@id/navigation_register" />
+    <action
+        android:id="@+id/action_settings_to_forgotpassword"
+        app:destination="@id/navigation_forgotpassword" />
 
     <fragment
         android:id="@+id/navigation_notifications"
@@ -33,14 +40,36 @@
         tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_login_to_home"
-            app:destination="@id/navigation_home" />
+            app:destination="@id/navigation_home"
+            app:popUpTo="@id/navigation_login"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_login_to_forgotpassword"
+            app:destination="@id/navigation_forgotpassword"
+            />
+
+
         <action
             android:id="@+id/action_login_to_register"
-            app:destination="@id/navigation_register" />
+            app:destination="@id/navigation_register"
+            />
     </fragment>
     <fragment
         android:id="@id/navigation_register"
         android:name="com.example.androidplanowaniewycieczek.ui.register.RegisterFragment"
         android:label="@string/title_register"
-        tools:layout="@layout/fragment_register"/>
+        tools:layout="@layout/fragment_register" />
+    <action
+        android:id="@+id/action_register_to_home"
+        app:destination="@id/navigation_home" />
+    <action
+        android:id="@+id/action_register_to_login"
+        app:destination="@id/navigation_login"/>
+    <fragment
+        android:id="@+id/navigation_forgotpassword"
+        android:name="com.example.androidplanowaniewycieczek.ui.login.ForgotPasswordFragment"/>
+        <action
+            android:id="@+id/action_forgotpassword_to_login"
+            app:destination="@id/navigation_login"
+            />
 </navigation>
