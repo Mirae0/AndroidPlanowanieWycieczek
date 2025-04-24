@@ -32,6 +32,8 @@
                 android:textStyle="bold"
                 android:layout_marginBottom="16dp" />
 
+
+    <!-- Pobierać z bazy i każdy item do listy-->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
