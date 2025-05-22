@@ -4,13 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="24dp">
+    android:padding="24dp"
+    android:background="?attr/colorPrimary">
 
     <TextView
         android:id="@+id/text_settings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Powiadmienia"
+        android:text="@string/powiadmienia2"
+        android:textColor="?attr/colorOnSecondary"
         android:textSize="24sp"
         android:layout_marginBottom="16dp"/>
 
@@ -18,8 +20,9 @@
         android:id="@+id/buttonLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ustaw powiadomienie"
-        android:backgroundTint="#87D19E"
+        android:text="@string/ustaw_powiadomienie"
+        android:backgroundTint="?attr/colorSecondary"
+        android:textColor="?attr/colorOnSecondary"
         app:cornerRadius="20dp"
         android:layout_marginTop="12dp"/>
 

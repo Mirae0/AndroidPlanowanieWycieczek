@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/green"
+    android:background="?attr/colorPrimary"
     tools:context=".ui.firstpage.PlannedTripsActivity">
 
     <ScrollView
@@ -22,14 +22,15 @@
                 android:id="@+id/quit_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/quit" />
+                app:srcCompat="@drawable/quit"
+                android:background="?attr/colorSecondary"/>
 
             <TextView
                 android:id="@+id/textView_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Twoje zaplanowane wycieczki"
-                android:textColor="@color/black"
+                android:text="@string/planned_trips"
+                android:textColor="?attr/colorOnSecondary"
                 android:textSize="20dp"
                 android:textStyle="bold"
                 android:layout_marginBottom="16dp" />
@@ -37,8 +38,8 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
+                android:id="@+id/bannerbackground"
                 android:background="@drawable/banner_backgorund">
-
 
 
                 <TextView
@@ -46,8 +47,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="Cel wycieczki"
-                    android:textColor="@color/black"
+                    android:text="@string/cel_wycieczki"
+                    android:textColor="?attr/colorOnPrimary"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -58,15 +59,29 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
-                    android:text="Data wycieczki"
-                    android:textColor="@color/black"
+                    android:text="@string/data_wycieczki"
+                    android:textColor="?attr/colorOnPrimary"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.732"
                     android:textSize="10dp"/>
+
+                <ImageView
+                    android:id="@+id/details_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    card_view:srcCompat="@drawable/settings" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

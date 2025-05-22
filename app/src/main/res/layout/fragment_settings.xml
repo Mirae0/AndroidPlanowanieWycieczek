@@ -4,32 +4,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="24dp">
+    android:padding="24dp"
+    android:background="?attr/colorPrimary">
 
     <TextView
         android:id="@+id/text_settings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ustawienia"
-        android:textSize="24sp"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp"
+        android:hint="@string/ustawienia2"
+        android:textColor="?attr/colorOnSecondary"
+        android:textSize="24sp" />
 
     <Button
         android:id="@+id/buttonLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Zaloguj się"
-        android:backgroundTint="#87D19E"
+        android:text="@string/zaloguj_sie1"
+        android:backgroundTint="?attr/colorSecondary"
         app:cornerRadius="20dp"
-        android:layout_marginTop="12dp"/>
+        android:layout_marginTop="12dp"
+        android:textColor="?attr/colorOnSecondary"/>
 
     <Button
         android:id="@+id/buttonRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Zarejestruj się"
+        android:text="@string/zarejestruj_sie1"
+        android:textColor="?attr/colorOnSecondary"
         android:layout_marginTop="12dp"
-        android:backgroundTint="#87D19E"
+        android:backgroundTint="?attr/colorSecondary"
         app:cornerRadius="20dp" />
 
     <Button
@@ -37,35 +41,39 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:text="Zmień hasło"
-        android:backgroundTint="#87D19E"
-        app:cornerRadius="20dp"/>
+        android:text="@string/zmie_haslo1"
+        android:backgroundTint="?attr/colorSecondary"
+        app:cornerRadius="20dp"
+        android:textColor="?attr/colorOnSecondary"/>
 
     <Button
         android:id="@+id/buttonChangeTheme"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:text="Zmień motyw"
-        android:backgroundTint="#87D19E"
-        app:cornerRadius="20dp"/>
+        android:text="@string/zmien_motyw"
+        android:backgroundTint="?attr/colorSecondary"
+        app:cornerRadius="20dp"
+        android:textColor="?attr/colorOnSecondary"/>
 
     <Button
         android:id="@+id/buttonChangeLanguage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:text="Zmień język"
-        android:backgroundTint="#87D19E"
-        app:cornerRadius="20dp"/>
+        android:text="@string/zmien_jezyk"
+        android:backgroundTint="?attr/colorSecondary"
+        app:cornerRadius="20dp"
+        android:textColor="?attr/colorOnSecondary"/>
 
     <Button
         android:id="@+id/buttonLogout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:text="Wyloguj się"
-        android:backgroundTint="#87D19E"
-        app:cornerRadius="20dp"/>
+        android:text="@string/wyloguj_sie"
+        android:backgroundTint="?attr/colorSecondary"
+        app:cornerRadius="20dp"
+        android:textColor="?attr/colorOnSecondary"/>
 
 </LinearLayout>

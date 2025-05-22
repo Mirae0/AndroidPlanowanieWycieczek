@@ -22,26 +22,52 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidPlanowanieWycieczek"
         tools:targetApi="31">
+
+        <!--
+             TODO: Before you run your application, you need a Google Maps API key.
+
+             To get one, follow the directions here:
+
+                https://developers.google.com/maps/documentation/android-sdk/get-api-key
+
+             Once you have your API key (it starts with "AIza"), define a new property in your
+             project's local.properties file (e.g. MAPS_API_KEY=Aiza...), and replace the
+             "YOUR_API_KEY" string in this file with "${MAPS_API_KEY}".
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCIsxw6Eix29thmIAaoCUnRBDjJHAw7JS0" />
+
+        <activity
+            android:name=".ui.firstpage.MapsActivity"
+            android:exported="true"
+            android:label="@string/title_activity_maps"
+            android:theme="@style/Theme.AndroidPlanowanieWycieczek" />
         <activity
             android:name=".ui.firstpage.SynchronizedActivity"
             android:exported="true"
-            android:theme="@style/Theme.MyApp"/>
+            android:theme="@style/Theme.AndroidPlanowanieWycieczek"
+            />
         <activity
             android:name=".ui.firstpage.RankingActivity"
             android:exported="true"
-            android:theme="@style/Theme.MyApp"/>
+            android:theme="@style/Theme.AndroidPlanowanieWycieczek"
+            />
         <activity
             android:name=".ui.firstpage.PlannedTripsActivity"
             android:exported="true"
-            android:theme="@style/Theme.MyApp"/>
+            android:theme="@style/Theme.AndroidPlanowanieWycieczek"
+            />
         <activity
             android:name=".ui.firstpage.MapActivity"
             android:exported="true"
-            android:theme="@style/Theme.MyApp" />
+            android:theme="@style/Theme.AndroidPlanowanieWycieczek"
+            />
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.MyApp">
+            android:theme="@style/Theme.AndroidPlanowanieWycieczek"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
