@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#BDDCC7"
+    android:background="?attr/colorPrimary"
     tools:context=".ui.register.RegisterFragment"
     android:gravity="center">
 
@@ -16,7 +16,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
         app:cardCornerRadius="30dp"
-        app:cardElevation="20dp">
+        app:cardElevation="20dp"
+        android:background="@color/white">
 
 
         <LinearLayout
@@ -30,7 +31,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Rejestracja"
+                android:text="@string/rejestracja"
                 android:textAlignment="center"
                 android:textColor="#87D19E"
                 android:textSize="36sp"
@@ -44,9 +45,9 @@
                 android:background="@drawable/custom"
                 android:drawableLeft="@drawable/baseline_person_24"
                 android:drawablePadding="8dp"
-                android:hint="Nazwa użytkownika"
+                android:hint="@string/nazwa_uzytkownika3"
                 android:padding="8dp"
-                android:textColor="@color/black" />
+                android:textColor="?attr/colorOnPrimary" />
 
             <EditText
                 android:id="@+id/register_password"
@@ -56,10 +57,10 @@
                 android:background="@drawable/custom"
                 android:drawableLeft="@drawable/baseline_lock_24"
                 android:drawablePadding="8dp"
-                android:hint="Hasło"
+                android:hint="@string/haslo2"
                 android:inputType="textPassword"
                 android:padding="8dp"
-                android:textColor="@color/black" />
+                android:textColor="?attr/colorOnPrimary" />
 
 
 
@@ -69,8 +70,9 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="30dp"
                 android:backgroundTint="#87D19E"
-                android:text="ZAREJESTRUJ SIĘ"
+                android:text="@string/zarejestruj_sie"
                 android:textSize="18sp"
+                android:textColor="?attr/colorOnSecondary"
                 app:cornerRadius="20dp" />
 
             <TextView
@@ -83,7 +85,7 @@
                 android:focusable="true"
                 android:minHeight="48dp"
                 android:padding="8dp"
-                android:text="Masz konto? Zaloguj się!"
+                android:text="@string/masz_konto_zaloguj_sie"
                 android:textColor="#87D19E"
                 android:textSize="10sp" />
 

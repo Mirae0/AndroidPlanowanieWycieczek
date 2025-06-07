@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#BDDCC7"
+    android:background="?attr/colorPrimary"
     tools:context=".ui.login.LoginFragment"
     android:gravity="center">
 
@@ -16,7 +16,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="30dp"
             app:cardCornerRadius="30dp"
-            app:cardElevation="20dp">
+            app:cardElevation="20dp"
+        android:background="@color/white">
 
 
         <LinearLayout
@@ -30,7 +31,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Logowanie"
+                android:text="@string/logowanie"
                 android:textAlignment="center"
                 android:textColor="#87D19E"
                 android:textSize="36sp"
@@ -44,7 +45,7 @@
                 android:background="@drawable/custom"
                 android:drawableLeft="@drawable/baseline_person_24"
                 android:drawablePadding="8dp"
-                android:hint="Nazwa użytkownika"
+                android:hint="@string/nazwa_uzytkownika2"
                 android:padding="8dp"
                 android:textColor="@color/black" />
 
@@ -56,7 +57,7 @@
                 android:background="@drawable/custom"
                 android:drawableLeft="@drawable/baseline_lock_24"
                 android:drawablePadding="8dp"
-                android:hint="Hasło"
+                android:hint="@string/haslo"
                 android:inputType="textPassword"
                 android:padding="8dp"
                 android:textColor="@color/black" />
@@ -76,11 +77,12 @@
 
                 <CheckBox
                     android:id="@+id/checkbox"
+                    android:backgroundTint="?attr/colorPrimary"
                     android:layout_width="300dp"
                     android:layout_height="match_parent"
                     android:padding="16dp"
-                    android:text="Nie jestem robotem."
-                    android:textColor="@color/black"
+                    android:text="@string/nie_jestem_robotem"
+                    android:textColor="#87D19E"
                     android:textSize="15dp"/>
             </LinearLayout>
 
@@ -94,7 +96,8 @@
                 android:focusable="true"
                 android:minHeight="48dp"
                 android:padding="8dp"
-                android:text="Zapomniałeś hasła?" />
+                android:text="@string/zapomniales_hasla"
+                android:textColor="#87D19E"/>
 
 
             <Button
@@ -102,7 +105,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:backgroundTint="#87D19E"
-                android:text="ZALOGUJ SIĘ"
+                android:text="@string/zaloguj_sie"
+                android:textColor="?attr/colorOnSecondary"
                 android:textSize="18sp"
                 app:cornerRadius="20dp" />
 
@@ -116,7 +120,7 @@
                 android:focusable="true"
                 android:minHeight="48dp"
                 android:padding="8dp"
-                android:text="Nie masz konta? Zarejestruj się!"
+                android:text="@string/nie_masz_konta_zarejestruj_sie"
                 android:textColor="#87D19E"
                 android:textSize="10sp" />
 

@@ -17,6 +17,7 @@ import androidx.navigation.Navigation;
 import com.example.androidplanowaniewycieczek.R;
 import com.example.androidplanowaniewycieczek.databinding.FragmentHomeBinding;
 import com.example.androidplanowaniewycieczek.ui.firstpage.MapActivity;
+import com.example.androidplanowaniewycieczek.ui.firstpage.MapsActivity;
 import com.example.androidplanowaniewycieczek.ui.firstpage.PlannedTripsActivity;
 import com.example.androidplanowaniewycieczek.ui.firstpage.RankingActivity;
 import com.example.androidplanowaniewycieczek.ui.firstpage.SynchronizedActivity;
@@ -31,7 +32,7 @@ public class HomeFragment extends Fragment {
 
         TextView planTripButton = view.findViewById(R.id.textView2);
         planTripButton.setOnClickListener(v -> {
-            Intent intent = new Intent(getActivity(), MapActivity.class);
+            Intent intent = new Intent(getActivity(), MapsActivity.class);
             startActivity(intent);
         });
         TextView plannedTripsButton = view.findViewById(R.id.textView6);

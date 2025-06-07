@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorPrimary">
+
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/quit_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/quit"
+            android:background="?attr/colorSecondary"/>
+
+        <EditText
+
+            android:id="@+id/edit_trip_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/white_background"
+            android:clickable="true"
+            android:focusable="false"
+            android:gravity="center"
+            android:text="@string/date"
+            android:textColor="?attr/colorSecondary"
+            android:minHeight="50dp"
+            android:textSize="20dp"
+            android:textStyle="italic"
+            tools:text="@tools:sample/date/ddmmyy" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/white_background"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/edit_trip_from"
+                android:layout_width="322dp"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="@string/from"
+                android:textColor="?attr/colorSecondary"
+                android:minHeight="48dp" />
+
+            <ImageButton
+                android:id="@+id/btn_current_location"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Pobierz lokalizację"
+                android:src="@android:drawable/ic_menu_mylocation" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/white_background"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/edit_trip_to"
+                android:layout_width="322dp"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="@string/to"
+                android:textColor="?attr/colorSecondary"
+                android:minHeight="48dp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_add_trip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="?attr/colorSecondary"
+            android:text="@string/add_trip"
+            android:textColor="?attr/colorOnSecondary"
+            android:textSize="18sp"
+            app:cornerRadius="20dp" />
+
+
+        <TextView
+            android:id="@+id/text_stats"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/white_background"
+            android:gravity="center"
+            android:text="@string/stats"
+            android:textColor="@android:color/black"
+            android:textStyle="bold" />
+
+        <fragment
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="567dp"
+            tools:context=".ui.firstpage.MapsActivity" />
+
+
+    </LinearLayout>
+
+</ScrollView>

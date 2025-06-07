@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/green"
+    android:background="?attr/colorPrimary"
     tools:context=".ui.firstpage.RankingActivity">
 
     <ScrollView
@@ -21,13 +21,14 @@
                 android:id="@+id/quit_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/quit" />
+                app:srcCompat="@drawable/quit"
+                android:background="?attr/colorSecondary"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ranking Twoich wycieczek"
-                android:textColor="@color/black"
+                android:text="@string/ranking_twoich_wycieczek"
+                android:textColor="?attr/colorOnSecondary"
                 android:textSize="20dp"
                 android:textStyle="bold"
                 android:layout_marginBottom="16dp" />
@@ -41,8 +42,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="Wkrótce zobaczysz tutaj statystyki!"
-                    android:textColor="@color/black"
+                    android:text="@string/wkrotce_zobaczysz_tutaj_statystyki"
+                    android:textColor="?attr/colorOnPrimary"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
