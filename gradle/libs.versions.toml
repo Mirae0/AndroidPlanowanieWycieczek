@@ -19,6 +19,8 @@ googleAndroidLibrariesMapsplatformSecretsGradlePlugin = "2.0.1"
 playServicesMaps = "19.2.0"
 playServicesSafetynet = "18.1.0"
 recyclerview = "1.4.0"
+playServicesRecaptcha = "17.1.0"
+playServicesRecaptchabase = "16.1.0"
 
 [libraries]
 json = { module = "org.json:json", version.ref = "json" }
@@ -39,6 +41,8 @@ play-services-location = { group = "com.google.android.gms", name = "play-servic
 play-services-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "playServicesMaps" }
 play-services-safetynet = { module = "com.google.android.gms:play-services-safetynet", version.ref = "playServicesSafetynet" }
 recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
+play-services-recaptcha = { group = "com.google.android.gms", name = "play-services-recaptcha", version.ref = "playServicesRecaptcha" }
+play-services-recaptchabase = { group = "com.google.android.gms", name = "play-services-recaptchabase", version.ref = "playServicesRecaptchabase" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
