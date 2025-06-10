@@ -60,10 +60,13 @@ dependencies {
     implementation (libs.json)
     implementation (libs.play.services.maps)
     implementation (libs.play.services.location)
-    implementation ("com.google.android.gms:play-services-maps:19.2.0")
-    implementation ("androidx.recyclerview:recyclerview:1.4.0")
+    implementation (libs.play.services.maps)
+    implementation (libs.recyclerview)
     // For control over item selection of both touch and mouse driven selection
-    implementation ("androidx.recyclerview:recyclerview-selection:1.1.0")
+    implementation ("androidx.recyclerview:recyclerview-selection:1.2.0")
+    implementation ("com.google.android.recaptcha:recaptcha:18.7.1")
+
+
 
 
 }

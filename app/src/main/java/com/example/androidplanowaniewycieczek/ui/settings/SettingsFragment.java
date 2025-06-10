@@ -70,6 +70,9 @@ public class SettingsFragment extends Fragment {
                 startActivity(intent);
             }
         });
+        binding.buttonLogout.setOnClickListener(v -> {
+            Navigation.findNavController(v).navigate(R.id.action_settings_to_login);
+        });
 
 
 
