@@ -106,6 +106,7 @@
                 android:orientation="horizontal">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/planTripBtn"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="12dp"
@@ -127,6 +128,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/plannedTripsBtn"
                     android:layout_width="0dp"
                     android:layout_height="170dp"
                     android:layout_marginStart="12dp"
@@ -158,6 +160,7 @@
                 android:orientation="horizontal">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/rankingBtn"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="12dp"
@@ -178,6 +181,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/synchronizeTripsBtn"
                     android:layout_width="0dp"
                     android:layout_height="170dp"
                     android:layout_marginStart="12dp"
