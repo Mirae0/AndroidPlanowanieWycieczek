@@ -59,4 +59,5 @@
     <string name="ustawienia2">Settings</string>
     <string name="powiadmienia2">Notifications</string>
     <string name="details">Szczegóły</string>
+    <string name="synch">Choose a device to synchroize with</string>
 </resources>

@@ -58,5 +58,6 @@
     <string name="ustawienia2">Ustawnienia</string>
     <string name="powiadmienia2">Powiadomienia</string>
     <string name="details">Szczegóły</string>
+    <string name="synch">Wybierz urządzenie do synchronizacji</string>
     />
 </resources>

@@ -2,14 +2,22 @@ package com.example.androidplanowaniewycieczek.ui.firstpage;
 
 import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.AttributeSet;
+import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.graphics.Insets;
@@ -18,6 +26,10 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.androidplanowaniewycieczek.MainActivity;
 import com.example.androidplanowaniewycieczek.R;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 public class SynchronizedActivity extends AppCompatActivity {
 
@@ -47,9 +59,22 @@ public class SynchronizedActivity extends AppCompatActivity {
             startActivity(enableBtIntent);
         }
 
-
-
         setContentView(R.layout.activity_synchronized);
+
+        ListView listView = findViewById(R.id.connectedBT);
+        Set<BluetoothDevice> dev = bluetoothAdapter.getBondedDevices();
+        ArrayList<String> list = new ArrayList<>();
+        for (BluetoothDevice d: dev
+             ) {
+            list.add(d.getName());
+        }
+
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,R.layout.listview_item,R.id.item_text,list);
+        listView.setAdapter(adapter);
+
+
+
         ImageView quitButton = findViewById(R.id.quit_button);
         quitButton.setOnClickListener(v -> {
             Intent intent = new Intent(SynchronizedActivity.this, MainActivity.class);
@@ -58,4 +83,6 @@ public class SynchronizedActivity extends AppCompatActivity {
             finish();
         });
     }
+
+
 }
