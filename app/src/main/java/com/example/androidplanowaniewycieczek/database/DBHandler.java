@@ -182,7 +182,7 @@ public class DBHandler extends SQLiteOpenHelper {
                 String from = cursor.getString(2);
                 String to = cursor.getString(3);
                 double distance = cursor.getDouble(4);
-                String date = cursor.getString(5);
+                String date = cursor.getString(7);
                 long duration = cursor.getLong(6);
 
                 Trip trip = new Trip(name, from, to, distance, date, duration);

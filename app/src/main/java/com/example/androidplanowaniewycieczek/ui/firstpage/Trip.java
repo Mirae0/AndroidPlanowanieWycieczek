@@ -40,6 +40,9 @@ public class Trip {
         this.durationMillis = durationMillis;
     }
 
+    public String getTripDate(){
+        return tripDate;
+    }
 
     public void startTrip() {
         startTime = System.currentTimeMillis();

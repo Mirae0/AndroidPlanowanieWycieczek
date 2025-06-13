@@ -53,10 +53,10 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.ViewHolder> {
         Trip trip = tripList.get(position);
         holder.destination.setText("Cel: " + trip.getLocationTo());
 
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(trip.getDurationMillis());
-        String formattedDate = new SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault()).format(calendar.getTime());
-        holder.date.setText("Data: " + formattedDate);
+//        Calendar calendar = Calendar.getInstance();
+//        calendar.setTimeInMillis(trip.getDurationMillis());
+//        String formattedDate = new SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault()).format(calendar.getTime());
+        holder.date.setText("Data: " + trip.getTripDate());
 
         if (trip.imageBitmap != null) {
             Drawable drawable = new BitmapDrawable(holder.itemView.getResources(), trip.imageBitmap);
