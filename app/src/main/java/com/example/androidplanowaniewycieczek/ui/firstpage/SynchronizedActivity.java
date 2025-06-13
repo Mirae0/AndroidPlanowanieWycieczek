@@ -1,6 +1,7 @@
 package com.example.androidplanowaniewycieczek.ui.firstpage;
 
 import android.Manifest;
+import android.app.Dialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
@@ -13,6 +14,7 @@ import android.os.Bundle;
 import android.os.ParcelUuid;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
@@ -21,6 +23,7 @@ import android.widget.ListView;
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.graphics.Insets;
@@ -29,17 +32,20 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.androidplanowaniewycieczek.MainActivity;
 import com.example.androidplanowaniewycieczek.R;
+import com.example.androidplanowaniewycieczek.ui.notifications.AlertChooseSynchronization;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
 public class SynchronizedActivity extends AppCompatActivity {
 
     private BluetoothSocket socket;
+    Dialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +97,11 @@ public class SynchronizedActivity extends AppCompatActivity {
                 BluetoothDevice bt = list2.get(position);
                 System.out.println(list.get(position));
 
+                dialog = new Dialog(SynchronizedActivity.this);
+                dialog.setContentView(R.layout.alert_choose_plan_synch);
+                Objects.requireNonNull(dialog.getWindow()).setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                dialog.setCancelable(true);
+                dialog.show();
                 if (ActivityCompat.checkSelfPermission(parent.getContext(), Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
                     // TODO: Consider calling
                     //    ActivityCompat#requestPermissions
@@ -106,6 +117,7 @@ public class SynchronizedActivity extends AppCompatActivity {
                 try{
                     socket = bt.createRfcommSocketToServiceRecord(uuid);
                     socket.connect();
+
                 }catch (IOException e){
                     e.printStackTrace();
                 }

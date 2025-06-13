@@ -61,5 +61,8 @@
     <string name="synch">Wybierz urządzenie do synchronizacji</string>
     <string name="ranking_title_text">Twoje najdłuższe wycieczki</string>
     <string name="ranking_body_text">Ranking utworzony na podstawie długości wycieczki w km</string>
+    <string name="dialog_choose_synch">Wybierz wycieczkę do przesłania</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Wycofaj</string>
     />
 </resources>
