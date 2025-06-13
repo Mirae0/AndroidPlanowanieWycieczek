@@ -1,6 +1,7 @@
 package com.example.androidplanowaniewycieczek.ui.notifications;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.AlarmManager;
 import android.app.DatePickerDialog;
 import android.app.PendingIntent;
@@ -30,6 +31,7 @@ import java.util.Calendar;
 public class NotificationsFragment extends Fragment {
     private FragmentNotificationsBinding binding;
 
+    @SuppressLint("ScheduleExactAlarm")
     @RequiresPermission(Manifest.permission.SCHEDULE_EXACT_ALARM)
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -40,9 +42,7 @@ public class NotificationsFragment extends Fragment {
         binding = FragmentNotificationsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        notificationsViewModel.getText().observe(getViewLifecycleOwner(), text -> {
-            binding.textSettings.setText(text);
-        });
+        notificationsViewModel.getText().observe(getViewLifecycleOwner(), text -> binding.textSettings.setText(text));
 
         binding.buttonLogin.setOnClickListener(v -> showDatePicker());
 
@@ -52,7 +52,7 @@ public class NotificationsFragment extends Fragment {
     @RequiresPermission(Manifest.permission.SCHEDULE_EXACT_ALARM)
     private void showDatePicker() {
         final Calendar calendar = Calendar.getInstance();
-        DatePickerDialog datePickerDialog = new DatePickerDialog(requireContext(),
+        @SuppressLint("ScheduleExactAlarm") DatePickerDialog datePickerDialog = new DatePickerDialog(requireContext(),
                 (view, year, month, dayOfMonth) -> {
                     calendar.set(Calendar.YEAR, year);
                     calendar.set(Calendar.MONTH, month);
@@ -67,7 +67,7 @@ public class NotificationsFragment extends Fragment {
 
     @RequiresPermission(Manifest.permission.SCHEDULE_EXACT_ALARM)
     private void showTimePicker(Calendar selectedDate) {
-        TimePickerDialog timePickerDialog = new TimePickerDialog(requireContext(),
+        @SuppressLint("ScheduleExactAlarm") TimePickerDialog timePickerDialog = new TimePickerDialog(requireContext(),
                 (view, hourOfDay, minute) -> {
                     selectedDate.set(Calendar.HOUR_OF_DAY, hourOfDay);
                     selectedDate.set(Calendar.MINUTE, minute);
@@ -89,7 +89,7 @@ public class NotificationsFragment extends Fragment {
                     }
 
                     Toast.makeText(requireContext(),
-                            "Powiadomienie ustawione na: " + selectedDate.getTime().toString(),
+                            "Powiadomienie ustawione na: " + selectedDate.getTime(),
                             Toast.LENGTH_LONG).show();
                 },
                 selectedDate.get(Calendar.HOUR_OF_DAY),
