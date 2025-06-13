@@ -22,7 +22,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="473dp"
+            android:layout_height="688dp"
             android:layout_gravity="center_horizontal"
             android:background="@drawable/custom"
             android:orientation="vertical"
@@ -50,6 +50,43 @@
                 android:textColor="?attr/colorOnPrimary" />
 
             <EditText
+                android:id="@+id/register_name"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/custom"
+                android:drawableLeft="@drawable/baseline_person_24"
+                android:drawablePadding="8dp"
+                android:hint="@string/nazwa_uzytkownika4"
+                android:padding="8dp"
+                android:textColor="?attr/colorOnPrimary" />
+
+            <EditText
+                android:id="@+id/register_surname"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/custom"
+                android:drawableLeft="@drawable/baseline_person_24"
+                android:drawablePadding="8dp"
+                android:hint="@string/nazwa_uzytkownika5"
+                android:padding="8dp"
+                android:textColor="?attr/colorOnPrimary" />
+
+            <EditText
+                android:id="@+id/register_email"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/custom"
+                android:drawableLeft="@drawable/baseline_person_24"
+                android:drawablePadding="8dp"
+                android:hint="@string/email"
+                android:padding="8dp"
+                android:textColor="?attr/colorOnPrimary" />
+
+
+            <EditText
                 android:id="@+id/register_password"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -61,7 +98,18 @@
                 android:inputType="textPassword"
                 android:padding="8dp"
                 android:textColor="?attr/colorOnPrimary" />
-
+            <!--            <EditText-->
+            <!--                android:id="@+id/register_password2"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="50dp"-->
+            <!--                android:layout_marginTop="20dp"-->
+            <!--                android:background="@drawable/custom"-->
+            <!--                android:drawableLeft="@drawable/baseline_lock_24"-->
+            <!--                android:drawablePadding="8dp"-->
+            <!--                android:hint="@string/haslo3"-->
+            <!--                android:inputType="textPassword"-->
+            <!--                android:padding="8dp"-->
+            <!--                android:textColor="?attr/colorOnPrimary" />-->
 
 
             <Button
@@ -71,8 +119,8 @@
                 android:layout_marginTop="30dp"
                 android:backgroundTint="#87D19E"
                 android:text="@string/zarejestruj_sie"
-                android:textSize="18sp"
                 android:textColor="?attr/colorOnSecondary"
+                android:textSize="18sp"
                 app:cornerRadius="20dp" />
 
             <TextView

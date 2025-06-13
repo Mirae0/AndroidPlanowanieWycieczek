@@ -49,7 +49,6 @@
                 android:layout_width="322dp"
                 android:layout_height="wrap_content"
                 android:gravity="left"
-                android:text="@string/from"
                 android:textColor="?attr/colorSecondary"
                 android:minHeight="48dp" />
 
@@ -76,7 +75,6 @@
                 android:layout_width="322dp"
                 android:layout_height="wrap_content"
                 android:gravity="left"
-                android:text="@string/to"
                 android:textColor="?attr/colorSecondary"
                 android:minHeight="48dp" />
         </LinearLayout>
@@ -88,6 +86,16 @@
             android:layout_marginTop="20dp"
             android:backgroundTint="?attr/colorSecondary"
             android:text="@string/add_trip"
+            android:textColor="?attr/colorOnSecondary"
+            android:textSize="18sp"
+            app:cornerRadius="20dp" />
+        <Button
+            android:id="@+id/btn_save_trip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="?attr/colorSecondary"
+            android:text="@string/save_trip"
             android:textColor="?attr/colorOnSecondary"
             android:textSize="18sp"
             app:cornerRadius="20dp" />

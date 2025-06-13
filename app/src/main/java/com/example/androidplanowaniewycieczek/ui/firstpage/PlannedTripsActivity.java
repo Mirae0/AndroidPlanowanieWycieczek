@@ -25,10 +25,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.androidplanowaniewycieczek.MainActivity;
 import com.example.androidplanowaniewycieczek.R;
+import com.example.androidplanowaniewycieczek.database.DBHandler;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 
 public class PlannedTripsActivity extends AppCompatActivity {
@@ -85,11 +88,37 @@ public class PlannedTripsActivity extends AppCompatActivity {
                     }
                 }
         );
+        // Odbierz dane z MapsActivity
+        Intent intent = getIntent();
+        from = intent.getStringExtra("from");
+        to = intent.getStringExtra("to");
+        tripTimeMillis = intent.getLongExtra("tripTimeMillis", -1);
         if (to != null && tripTimeMillis != -1) {
             Trip trip = new Trip(from, to, tripTimeMillis, null);
             TripStorageHolder.addTrip(trip);
         }
+        if (from != null && to != null && tripTimeMillis > 0) {
+            DBHandler dbHandler = new DBHandler(this);
+            String tripName = "Wycieczka do " + to;
 
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTimeInMillis(tripTimeMillis);
+            String formattedDate = new SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault()).format(calendar.getTime());
+
+            double estimatedDistance = 0.0;
+            dbHandler.saveFutureTrip(tripName, from, to, estimatedDistance, formattedDate);
+        }
+
+        if (to != null) {
+            destinationTextView.setText("Cel: " + to);
+        }
+
+        if (tripTimeMillis != -1) {
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTimeInMillis(tripTimeMillis);
+            String formattedDate = new SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault()).format(calendar.getTime());
+            dateTextView.setText("Data: " + formattedDate);
+        }
 
         if (TripDataHolder.to != null) {
             destinationTextView.setText("Cel: " + TripDataHolder.to);
@@ -104,27 +133,6 @@ public class PlannedTripsActivity extends AppCompatActivity {
             Drawable drawable = new BitmapDrawable(getResources(), TripDataHolder.imageBitmap);
             bannerLayout.setBackground(drawable);
         }
-
-
-
-        // Odbierz dane z MapsActivity
-        Intent intent = getIntent();
-        from = intent.getStringExtra("from");
-        to = intent.getStringExtra("to");
-        tripTimeMillis = intent.getLongExtra("tripTimeMillis", -1);
-
-        if (to != null) {
-            destinationTextView.setText("Cel: " + to);
-        }
-
-        if (tripTimeMillis != -1) {
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTimeInMillis(tripTimeMillis);
-            String formattedDate = new SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault()).format(calendar.getTime());
-            dateTextView.setText("Data: " + formattedDate);
-        }
-
-
 
         // Obsługa kliknięcia ikony szczegółów
         detailsButton.setOnClickListener(v -> showOptionsDialog());
@@ -166,7 +174,7 @@ public class PlannedTripsActivity extends AppCompatActivity {
 
         details.append("Data: ").append(formattedDate).append("\n");
 
-        // Tutaj możesz dodać statystyki itp.
+
         details.append("Statystyki: brak danych");
 
         new AlertDialog.Builder(this)
@@ -197,4 +205,5 @@ public class PlannedTripsActivity extends AppCompatActivity {
         public static long tripTimeMillis;
         public static Bitmap imageBitmap;
     }
+
 }

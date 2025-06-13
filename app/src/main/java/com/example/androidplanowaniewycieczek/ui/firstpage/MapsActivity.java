@@ -41,6 +41,7 @@ import androidx.core.app.ActivityCompat;
 
 import com.example.androidplanowaniewycieczek.MainActivity;
 import com.example.androidplanowaniewycieczek.R;
+import com.example.androidplanowaniewycieczek.database.DBHandler;
 import com.google.android.gms.location.*;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -72,6 +73,8 @@ public class MapsActivity extends AppCompatActivity implements SensorEventListen
     private LocationCallback locationCallback;
     private GoogleMap map;
     private SupportMapFragment mapFragment;
+    private DBHandler dbHandler;
+
 
     private EditText editFrom, editTo, editDate;
     private TextView textStats;
@@ -105,6 +108,8 @@ public class MapsActivity extends AppCompatActivity implements SensorEventListen
         SharedPreferences prefs = getSharedPreferences("googleApi", Context.MODE_PRIVATE);
         Configuration.getInstance().load(this, prefs);
         setContentView(R.layout.activity_maps);
+        dbHandler = new DBHandler(this);
+
 
         ImageView quitButton = findViewById(R.id.quit_button);
         quitButton.setOnClickListener(v -> {
@@ -131,6 +136,11 @@ public class MapsActivity extends AppCompatActivity implements SensorEventListen
         Button btnAdd = findViewById(R.id.btn_add_trip);
         ImageButton btnLocation = findViewById(R.id.btn_current_location);
         btnLocation.setOnClickListener(v -> fillCurrentLocationInFromField());
+        Button btnSaveTrip = findViewById(R.id.btn_save_trip);
+        btnSaveTrip.setOnClickListener(v -> {
+            saveCurrentTrip();
+        });
+
 
 
         // Krokomierz
@@ -444,6 +454,38 @@ public class MapsActivity extends AppCompatActivity implements SensorEventListen
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
     }
+
+    private void saveCurrentTrip() {
+        String from = editFrom.getText().toString().trim();
+        String to = editTo.getText().toString().trim();
+        String date = editDate.getText().toString().trim();
+
+        if (from.isEmpty() || to.isEmpty() || date.isEmpty()) {
+            Toast.makeText(this, "Wypełnij pola: skąd, dokąd oraz data!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        Trip tripToSave = new Trip();
+        tripToSave.setLocationFrom(from);
+        tripToSave.setLocationTo(to);
+        tripToSave.setTripDate(date);
+        tripToSave.setTotalDistanceKM(statsManager.getTotalDistanceKm());
+        tripToSave.setDurationMillis(statsManager.getDurationMillis());
+
+        tripToSave.setName("Wycieczka do " + to);
+
+        dbHandler.saveTrip(tripToSave);
+
+        Toast.makeText(this, "Wycieczka zapisana!", Toast.LENGTH_SHORT).show();
+
+        Intent intent = new Intent(MapsActivity.this, RankingActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+
+
+
 
     @Override
     protected void onResume() {
