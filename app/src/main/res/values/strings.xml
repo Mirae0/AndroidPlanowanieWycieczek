@@ -64,5 +64,10 @@
     <string name="dialog_choose_synch">Wybierz wycieczkę do przesłania</string>
     <string name="ok">Ok</string>
     <string name="cancel">Wycofaj</string>
+    <string name="haslo3">Powtórz hasło</string>
+    <string name="nazwa_uzytkownika5">Nazwisko</string>
+    <string name="nazwa_uzytkownika4">Imię</string>
+    <string name="email">Email</string>
+    <string name="save_trip">Zapisz</string>
     />
 </resources>

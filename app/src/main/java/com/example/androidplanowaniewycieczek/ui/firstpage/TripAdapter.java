@@ -1,5 +1,7 @@
 package com.example.androidplanowaniewycieczek.ui.firstpage;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
@@ -64,7 +66,16 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.ViewHolder> {
         }
 
         holder.detailsButton.setOnClickListener(v -> {
+            PlannedTripsActivity.TripDataHolder.from = trip.getLocationFrom();
+            PlannedTripsActivity.TripDataHolder.to = trip.getLocationTo();
+            PlannedTripsActivity.TripDataHolder.tripTimeMillis = trip.getDurationMillis();
+            PlannedTripsActivity.TripDataHolder.imageBitmap = trip.imageBitmap;
+
+            Context context = v.getContext();
+            Intent intent = new Intent(context, PlannedTripsActivity.class);
+            context.startActivity(intent);
         });
+
     }
 
     @Override

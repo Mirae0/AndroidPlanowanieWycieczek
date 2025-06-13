@@ -20,6 +20,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.androidplanowaniewycieczek.R;
+import com.example.androidplanowaniewycieczek.database.DBHandler;
 import com.google.android.recaptcha.Recaptcha;
 import com.google.android.recaptcha.RecaptchaTasksClient;
 import com.google.android.recaptcha.RecaptchaAction;
@@ -90,6 +91,17 @@ public class LoginFragment extends Fragment {
                         .navigate(R.id.action_login_to_home, null, navOptions);
             } else {
                 Toast.makeText(requireContext(), "Proszę najpierw potwierdzić reCAPTCHA!", Toast.LENGTH_SHORT).show();
+            }
+            DBHandler dbHandler = new DBHandler(requireContext());
+            if (dbHandler.checkUserCredentials(usernameText, passwordText)) {
+                Toast.makeText(requireContext(), "Zalogowano!", Toast.LENGTH_SHORT).show();
+                NavOptions navOptions = new NavOptions.Builder()
+                        .setPopUpTo(R.id.navigation_login, true)
+                        .build();
+                NavHostFragment.findNavController(LoginFragment.this)
+                        .navigate(R.id.action_login_to_home, null, navOptions);
+            } else {
+                Toast.makeText(requireContext(), "Niepoprawne dane logowania!", Toast.LENGTH_SHORT).show();
             }
         });
 

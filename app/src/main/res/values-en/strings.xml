@@ -65,4 +65,9 @@
     <string name="dialog_choose_synch">Choose a trip to send</string>
     <string name="ok">Ok</string>
     <string name="cancel">Cancel</string>
+    <string name="haslo3">Repeat password</string>
+    <string name="nazwa_uzytkownika5">Surname</string>
+    <string name="nazwa_uzytkownika4">Name</string>
+    <string name="email">Email</string>
+    <string name="save_trip">Save</string>
 </resources>

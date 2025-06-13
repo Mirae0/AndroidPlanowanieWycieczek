@@ -10,9 +10,13 @@ public class Trip {
 
     private long startTime;
     private long endTime;
-    private double totalDistanceMeters,totalDistanceKM;
+    public double totalDistanceMeters;
+    public double totalDistanceKM;
     private long durationMillis;
-    private String name,locationFrom,locationTo,tripDate;
+    private String name;
+    private String locationFrom;
+    private String locationTo;
+    public String tripDate;
     public Bitmap imageBitmap;
 
 
@@ -27,14 +31,15 @@ public class Trip {
         this.imageBitmap=imageBitmap;
     }
 
-    public Trip(String name,String locationFrom,String locationTo,double totalDistanceKM, String tripDate, long durationMillis){
+    public Trip(String name, String locationFrom, String locationTo, double totalDistanceKM, String tripDate, long durationMillis){
         this.name = name;
         this.locationFrom = locationFrom;
         this.locationTo = locationTo;
-        this.tripDate = tripDate;
         this.totalDistanceKM = totalDistanceKM;
+        this.tripDate = tripDate;
         this.durationMillis = durationMillis;
     }
+
 
     public void startTrip() {
         startTime = System.currentTimeMillis();
@@ -83,5 +88,25 @@ public class Trip {
 
     public void setDurationMillis(long millis) {
         this.durationMillis = millis;
+    }
+
+
+    public void setName(String name) { this.name = name; }
+
+
+    public String setLocationFrom(String string) {
+        return locationFrom;
+    }
+
+    public String setLocationTo(String string) {
+        return locationTo;
+    }
+
+    public void setTripDate(String tripDate) {
+        this.tripDate = tripDate;
+    }
+
+    public void setTotalDistanceKM(double totalDistanceKM) {
+        this.totalDistanceKM = totalDistanceKM;
     }
 }
