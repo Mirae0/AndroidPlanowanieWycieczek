@@ -20,9 +20,9 @@ import java.util.Locale;
 
 public class TripAdapter extends RecyclerView.Adapter<TripAdapter.ViewHolder> {
 
-    private List<TripData> tripList;
+    private List<Trip> tripList;
 
-    public TripAdapter(List<TripData> tripList) {
+    public TripAdapter(List<Trip> tripList) {
         this.tripList = tripList;
     }
 
@@ -33,8 +33,8 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.ViewHolder> {
 
         public ViewHolder(View itemView) {
             super(itemView);
-            destination = itemView.findViewById(R.id.trip_destination);
-            date = itemView.findViewById(R.id.trip_date);
+            destination = itemView.findViewById(R.id.ranking_trip_destination);
+            date = itemView.findViewById(R.id.ranking_trip_date);
             bannerLayout = itemView.findViewById(R.id.bannerbackground);
             detailsButton = itemView.findViewById(R.id.details_button);
         }
@@ -48,11 +48,11 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(TripAdapter.ViewHolder holder, int position) {
-        TripData trip = tripList.get(position);
-        holder.destination.setText("Cel: " + trip.getTo());
+        Trip trip = tripList.get(position);
+        holder.destination.setText("Cel: " + trip.getLocationTo());
 
         Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(trip.getTripTimeMillis());
+        calendar.setTimeInMillis(trip.getDurationMillis());
         String formattedDate = new SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault()).format(calendar.getTime());
         holder.date.setText("Data: " + formattedDate);
 

@@ -60,4 +60,6 @@
     <string name="powiadmienia2">Notifications</string>
     <string name="details">Szczegóły</string>
     <string name="synch">Choose a device to synchroize with</string>
+    <string name="ranking_title_text">Your longest trips</string>
+    <string name="ranking_body_text">Ranking was created based on the length of the trips in km</string>
 </resources>

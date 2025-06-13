@@ -59,5 +59,7 @@
     <string name="powiadmienia2">Powiadomienia</string>
     <string name="details">Szczegóły</string>
     <string name="synch">Wybierz urządzenie do synchronizacji</string>
+    <string name="ranking_title_text">Twoje najdłuższe wycieczki</string>
+    <string name="ranking_body_text">Ranking utworzony na podstawie długości wycieczki w km</string>
     />
 </resources>
