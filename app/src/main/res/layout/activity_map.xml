@@ -81,7 +81,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#87D19E"
-            android:text="DODAJ WYCIECZKĘ"
+            android:text="@string/add_trip"
             android:layout_marginTop="20dp"
             android:textSize="18sp"
             app:cornerRadius="20dp" />
@@ -91,7 +91,7 @@
             android:id="@+id/text_stats"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Statystyki: "
+            android:text="@string/stats"
             android:gravity="center"
             android:layout_marginTop="10dp"
             android:textColor="@android:color/black"

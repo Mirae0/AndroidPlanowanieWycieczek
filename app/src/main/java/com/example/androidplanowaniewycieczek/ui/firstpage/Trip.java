@@ -94,12 +94,12 @@ public class Trip {
     public void setName(String name) { this.name = name; }
 
 
-    public String setLocationFrom(String string) {
-        return locationFrom;
+    public void setLocationFrom(String string) {
+        this.locationFrom=string;
     }
 
-    public String setLocationTo(String string) {
-        return locationTo;
+    public void setLocationTo(String string) {
+        this.locationTo=string;
     }
 
     public void setTripDate(String tripDate) {

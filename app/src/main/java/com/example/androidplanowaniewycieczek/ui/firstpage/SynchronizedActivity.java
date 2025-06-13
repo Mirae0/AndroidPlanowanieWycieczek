@@ -37,9 +37,10 @@ public class SynchronizedActivity extends AppCompatActivity {
 
     private BluetoothSocket socket;
     Dialog dialog;
-    DBHandler db  = new DBHandler();
-
     Context context = this;
+    DBHandler db  = new DBHandler(context);
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,7 +92,7 @@ public class SynchronizedActivity extends AppCompatActivity {
                 BluetoothDevice bt = list2.get(position);
                 System.out.println(list.get(position));
 
-                choose();
+               choose();
 
                 if (ActivityCompat.checkSelfPermission(parent.getContext(), Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
                     // TODO: Consider calling
@@ -125,12 +126,10 @@ public class SynchronizedActivity extends AppCompatActivity {
     }
 
     protected void choose(){
-        ArrayList<String> arr = new ArrayList<>();
-        arr = db.getFutureTripsNames();
+        ArrayList<String> arr = db.getRankingNames();
         Spinner spinner = findViewById(R.id.spinner_synch);
         ArrayAdapter<String> adapter1 = new ArrayAdapter<>(context, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,arr);
         spinner.setAdapter(adapter1);
-
 
         dialog = new Dialog(SynchronizedActivity.this);
         dialog.setContentView(R.layout.alert_choose_plan_synch);

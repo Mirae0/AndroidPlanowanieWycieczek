@@ -44,7 +44,7 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.ViewHolder> {
 
     @Override
     public TripAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_trip, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_ranking_trip, parent, false);
         return new ViewHolder(view);
     }
 
@@ -65,16 +65,6 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.ViewHolder> {
             holder.bannerLayout.setBackgroundResource(R.drawable.banner_backgorund);
         }
 
-        holder.detailsButton.setOnClickListener(v -> {
-            PlannedTripsActivity.TripDataHolder.from = trip.getLocationFrom();
-            PlannedTripsActivity.TripDataHolder.to = trip.getLocationTo();
-            PlannedTripsActivity.TripDataHolder.tripTimeMillis = trip.getDurationMillis();
-            PlannedTripsActivity.TripDataHolder.imageBitmap = trip.imageBitmap;
-
-            Context context = v.getContext();
-            Intent intent = new Intent(context, PlannedTripsActivity.class);
-            context.startActivity(intent);
-        });
 
     }
 

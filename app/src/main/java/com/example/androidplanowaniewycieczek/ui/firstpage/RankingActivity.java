@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -34,27 +35,36 @@ public class RankingActivity extends AppCompatActivity {
 
         dbHandler = new DBHandler(this);
 
-        TextView rankingBody = findViewById(R.id.rankingBody);
+        //TextView rankingBody = findViewById(R.id.rankingBody);
         ArrayList<Trip> tripList = dbHandler.getRanking();
+        TripAdapter adapter = new TripAdapter(tripList);
+
+        RecyclerView recyclerView = findViewById(R.id.ranking_recycler);
+        recyclerView.setAdapter(adapter);
+
+
         Log.d("RANKING", "Pobrano " + tripList.size() + " rekordów");
 
-// Budowanie tekstu rankingu
-        StringBuilder rankingText = new StringBuilder();
-        for (int i = 0; i < tripList.size(); i++) {
-            Trip trip = tripList.get(i);
-            rankingText.append(i + 1)
-                    .append(". ")
-                    .append(trip.getLocationFrom())
-                    .append(" ➝ ")
-                    .append(trip.getLocationTo())
-                    .append(" – ")
-                    .append(String.format("%.2f km", trip.getTotalDistanceKm()))
-                    .append(" – ")
-                    .append(trip.getFormattedDuration())
-                    .append("\n");
-        }
 
-        rankingBody.setText(rankingText.toString());
+
+//
+//// Budowanie tekstu rankingu
+//        StringBuilder rankingText = new StringBuilder();
+//        for (int i = 0; i < tripList.size(); i++) {
+//            Trip trip = tripList.get(i);
+//            rankingText.append(i + 1)
+//                    .append(". ")
+//                    .append(trip.getLocationFrom())
+//                    .append(" ➝ ")
+//                    .append(trip.getLocationTo())
+//                    .append(" – ")
+//                    .append(String.format("%.2f km", trip.getTotalDistanceKm()))
+//                    .append(" – ")
+//                    .append(trip.getFormattedDuration())
+//                    .append("\n");
+//        }
+//
+//        rankingBody.setText(rankingText.toString());
 
 
 

@@ -178,14 +178,15 @@ public class DBHandler extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query, null);
         if (cursor.moveToFirst()) {
             do {
-                String name = cursor.getString(cursor.getColumnIndexOrThrow(SAVED_TRIP_NAME_COL));
-                String from = cursor.getString(cursor.getColumnIndexOrThrow(SAVED_FROM_COL));
-                String to = cursor.getString(cursor.getColumnIndexOrThrow(SAVED_TO_COL));
-                double distance = cursor.getDouble(cursor.getColumnIndexOrThrow(SAVED_DISTANCE_COL));
-                String date = cursor.getString(cursor.getColumnIndexOrThrow(SAVED_DATE_COL));
-                long duration = cursor.getLong(cursor.getColumnIndexOrThrow(SAVED_DURATION_COL));
+                String name = cursor.getString(1);
+                String from = cursor.getString(2);
+                String to = cursor.getString(3);
+                double distance = cursor.getDouble(4);
+                String date = cursor.getString(5);
+                long duration = cursor.getLong(6);
 
                 Trip trip = new Trip(name, from, to, distance, date, duration);
+                Log.d("DB", "Pobrano z bazy: " + trip.getLocationFrom() + " do "+trip.getLocationTo());
                 wynik.add(trip);
             } while (cursor.moveToNext());
         }
@@ -195,6 +196,22 @@ public class DBHandler extends SQLiteOpenHelper {
 
         return wynik;
 
+    }
+
+    public ArrayList<String> getRankingNames(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        ArrayList<String> wynik = new ArrayList<>();
+        String query="SELECT "+SAVED_TRIP_NAME_COL+" FROM "+TB_SAVED_TRIPS;
+
+        Cursor cursor = db.rawQuery(query, null);
+        if(cursor.moveToFirst()){
+            do{
+                wynik.add(cursor.getString(0));
+            }while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return wynik;
     }
 
     //-----------------FUTURE_TRIPS FUNC------------------------

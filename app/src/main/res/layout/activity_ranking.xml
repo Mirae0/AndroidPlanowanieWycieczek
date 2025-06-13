@@ -61,4 +61,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rankingTitle" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ranking_recycler"
+        android:layout_width="409dp"
+        android:layout_height="617dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ranking_list" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

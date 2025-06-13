@@ -30,6 +30,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -458,7 +460,10 @@ public class MapsActivity extends AppCompatActivity implements SensorEventListen
     private void saveCurrentTrip() {
         String from = editFrom.getText().toString().trim();
         String to = editTo.getText().toString().trim();
-        String date = editDate.getText().toString().trim();
+        LocalDateTime ldt = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        String date = formatter.format(ldt);
+        Log.e("test","F: "+from+" T: "+to+" D: "+date);
 
         if (from.isEmpty() || to.isEmpty() || date.isEmpty()) {
             Toast.makeText(this, "Wypełnij pola: skąd, dokąd oraz data!", Toast.LENGTH_SHORT).show();
@@ -473,6 +478,7 @@ public class MapsActivity extends AppCompatActivity implements SensorEventListen
         tripToSave.setDurationMillis(statsManager.getDurationMillis());
 
         tripToSave.setName("Wycieczka do " + to);
+        System.out.println(tripToSave.getName());
 
         dbHandler.saveTrip(tripToSave);
 
