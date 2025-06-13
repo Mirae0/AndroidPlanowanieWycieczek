@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +23,8 @@ import com.example.androidplanowaniewycieczek.R;
 import com.google.android.recaptcha.Recaptcha;
 import com.google.android.recaptcha.RecaptchaTasksClient;
 import com.google.android.recaptcha.RecaptchaAction;
+import android.widget.EditText;
+
 
 
 public class LoginFragment extends Fragment {
@@ -34,6 +37,8 @@ public class LoginFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_login, container, false);
+        EditText username = view.findViewById(R.id.login_username);
+        EditText password = view.findViewById(R.id.login_password);
 
         // Inicjalizacja reCAPTCHA
         Recaptcha.fetchTaskClient(requireActivity().getApplication(), SITE_KEY)
@@ -64,6 +69,18 @@ public class LoginFragment extends Fragment {
 
         Button signin = view.findViewById(R.id.login_button);
         signin.setOnClickListener(v -> {
+            String usernameText = username.getText().toString().trim();
+            String passwordText = password.getText().toString().trim();
+            if (usernameText.isEmpty()) {
+                Toast.makeText(requireContext(), "Proszę uzupełnić nazwę użytkownika!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (passwordText.isEmpty()) {
+                Toast.makeText(requireContext(), "Proszę uzupełnić hasło!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             if (captchaVerified) {
                 Toast.makeText(requireContext(), "Zalogowano!", Toast.LENGTH_SHORT).show();
                 NavOptions navOptions = new NavOptions.Builder()
