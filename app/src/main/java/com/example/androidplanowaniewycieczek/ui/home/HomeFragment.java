@@ -5,18 +5,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 
 import com.example.androidplanowaniewycieczek.R;
-import com.example.androidplanowaniewycieczek.databinding.FragmentHomeBinding;
-import com.example.androidplanowaniewycieczek.ui.firstpage.MapActivity;
 import com.example.androidplanowaniewycieczek.ui.firstpage.MapsActivity;
 import com.example.androidplanowaniewycieczek.ui.firstpage.PlannedTripsActivity;
 import com.example.androidplanowaniewycieczek.ui.firstpage.RankingActivity;
@@ -30,22 +24,22 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        TextView planTripButton = view.findViewById(R.id.textView2);
+        ConstraintLayout planTripButton = view.findViewById(R.id.planTripBtn);
         planTripButton.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), MapsActivity.class);
             startActivity(intent);
         });
-        TextView plannedTripsButton = view.findViewById(R.id.textView6);
+        ConstraintLayout plannedTripsButton = view.findViewById(R.id.plannedTripsBtn);
         plannedTripsButton.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), PlannedTripsActivity.class);
             startActivity(intent);
         });
-        TextView rankingButton = view.findViewById(R.id.textView7);
+        ConstraintLayout rankingButton = view.findViewById(R.id.rankingBtn);
         rankingButton.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), RankingActivity.class);
             startActivity(intent);
         });
-        TextView synchronizeTripButton = view.findViewById(R.id.textView9);
+        ConstraintLayout synchronizeTripButton = view.findViewById(R.id.synchronizeTripsBtn);
         synchronizeTripButton.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), SynchronizedActivity.class);
             startActivity(intent);

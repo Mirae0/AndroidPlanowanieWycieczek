@@ -86,7 +86,7 @@ public class PlannedTripsActivity extends AppCompatActivity {
                 }
         );
         if (to != null && tripTimeMillis != -1) {
-            TripData trip = new TripData(from, to, tripTimeMillis, null);
+            Trip trip = new Trip(from, to, tripTimeMillis, null);
             TripStorageHolder.addTrip(trip);
         }
 

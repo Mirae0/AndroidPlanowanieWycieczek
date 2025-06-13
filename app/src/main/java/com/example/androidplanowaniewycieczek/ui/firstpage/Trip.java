@@ -1,5 +1,7 @@
 package com.example.androidplanowaniewycieczek.ui.firstpage;
 
+import android.graphics.Bitmap;
+
 import org.osmdroid.util.GeoPoint;
 
 import java.util.List;
@@ -8,8 +10,31 @@ public class Trip {
 
     private long startTime;
     private long endTime;
-    private double totalDistanceMeters;
+    private double totalDistanceMeters,totalDistanceKM;
     private long durationMillis;
+    private String name,locationFrom,locationTo,tripDate;
+    public Bitmap imageBitmap;
+
+
+    public Trip(){
+        super();
+    }
+
+    public Trip(String locationFrom, String locationTo, long durationMillis, Bitmap imageBitmap){
+        this.locationFrom=locationFrom;
+        this.locationTo=locationTo;
+        this.durationMillis=durationMillis;
+        this.imageBitmap=imageBitmap;
+    }
+
+    public Trip(String name,String locationFrom,String locationTo,double totalDistanceKM, String tripDate, long durationMillis){
+        this.name = name;
+        this.locationFrom = locationFrom;
+        this.locationTo = locationTo;
+        this.tripDate = tripDate;
+        this.totalDistanceKM = totalDistanceKM;
+        this.durationMillis = durationMillis;
+    }
 
     public void startTrip() {
         startTime = System.currentTimeMillis();
@@ -36,6 +61,12 @@ public class Trip {
     public long getDurationMillis() {
         return durationMillis;
     }
+
+    public String getLocationTo() {return locationTo; }
+
+    public String getLocationFrom() {return locationFrom;}
+
+    public String getName() {return name;}
 
     public String getFormattedDuration() {
         long seconds = getDurationMillis() / 1000;
