@@ -140,6 +140,39 @@ public class DBHandler extends SQLiteOpenHelper {
         return wynik;
     }
 
+    //-----------------FUTURE_TRIPS FUNC------------------------
+    public ArrayList<Trip> getFutureTripsAll(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        ArrayList<Trip> wynik = new ArrayList<>();
+        String query="SELECT * FROM "+TB_FUTURE_TRIPS;
+
+        Cursor cursor = db.rawQuery(query, null);
+        if(cursor.moveToFirst()){
+            do{
+                wynik.add(new Trip(cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getDouble(4),cursor.getString(5),cursor.getLong(6)));
+            }while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return wynik;
+    }
+
+    public ArrayList<String> getFutureTripsNames(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        ArrayList<String> wynik = new ArrayList<>();
+        String query="SELECT "+FUTURE_TRIP_NAME_COL+" FROM "+TB_FUTURE_TRIPS;
+
+        Cursor cursor = db.rawQuery(query, null);
+        if(cursor.moveToFirst()){
+            do{
+                wynik.add(cursor.getString(0));
+            }while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return wynik;
+    }
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS "+TB_USERS);
