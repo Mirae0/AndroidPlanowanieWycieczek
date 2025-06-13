@@ -20,6 +20,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresPermission;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
@@ -48,6 +50,16 @@ public class SynchronizedActivity extends AppCompatActivity {
 
         BluetoothManager bluetoothManager = getSystemService(BluetoothManager.class);
         BluetoothAdapter bluetoothAdapter = bluetoothManager.getAdapter();
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S &&
+                ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.BLUETOOTH_CONNECT}, 1001);
+            return;
+        }
+
+
+        initializeUI(bluetoothAdapter);
 
         //Jeśli aplikacja nie ma uprawnień do bt to crashuje
 
@@ -125,17 +137,82 @@ public class SynchronizedActivity extends AppCompatActivity {
         });
     }
 
-    protected void choose(){
+    protected void choose() {
         ArrayList<String> arr = db.getRankingNames();
-        Spinner spinner = findViewById(R.id.spinner_synch);
-        ArrayAdapter<String> adapter1 = new ArrayAdapter<>(context, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,arr);
-        spinner.setAdapter(adapter1);
-
         dialog = new Dialog(SynchronizedActivity.this);
         dialog.setContentView(R.layout.alert_choose_plan_synch);
         Objects.requireNonNull(dialog.getWindow()).setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         dialog.setCancelable(true);
+        Spinner spinner = dialog.findViewById(R.id.spinner_synch);
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<>(context,
+                androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
+                arr);
+        spinner.setAdapter(adapter1);
         dialog.show();
     }
+    @RequiresPermission(Manifest.permission.BLUETOOTH_CONNECT)
+    private void initializeUI(BluetoothAdapter bluetoothAdapter) {
+        setContentView(R.layout.activity_synchronized);
+
+        ListView listView = findViewById(R.id.connectedBT);
+
+        Set<BluetoothDevice> dev = bluetoothAdapter.getBondedDevices();
+        ArrayList<String> list = new ArrayList<>();
+        ArrayList<BluetoothDevice> list2 = new ArrayList<>(dev);
+        for (BluetoothDevice d : dev) {
+            list.add(d.getName());
+        }
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.listview_item, R.id.item_text, list);
+        listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener((parent, view, position, id) -> {
+            BluetoothDevice bt = list2.get(position);
+            System.out.println(list.get(position));
+
+            choose();
+
+            if (ActivityCompat.checkSelfPermission(parent.getContext(), Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+                return;
+            }
+
+            ParcelUuid[] uuidP = bt.getUuids();
+            UUID uuid = UUID.fromString(uuidP[0].toString());
+
+            try {
+                socket = bt.createRfcommSocketToServiceRecord(uuid);
+                socket.connect();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+        ImageView quitButton = findViewById(R.id.quit_button);
+        quitButton.setOnClickListener(v -> {
+            Intent intent = new Intent(SynchronizedActivity.this, MainActivity.class);
+            intent.putExtra("destination", "home");
+            startActivity(intent);
+            finish();
+        });
+    }
+    @RequiresPermission(Manifest.permission.BLUETOOTH_CONNECT)
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == 1001) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                BluetoothManager bluetoothManager = getSystemService(BluetoothManager.class);
+                BluetoothAdapter bluetoothAdapter = bluetoothManager.getAdapter();
+                initializeUI(bluetoothAdapter);
+            } else {
+
+                finish();
+            }
+        }
+    }
+
+
+
 
 }
